@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 
-#include "MyTools.h"
+#include "FileLoggerSingletone/FileLoggerSingletone.h"
 #include "Ground.h"
 
 
@@ -9,9 +9,9 @@
 
 void Crater::Draw() const {
     if (width == SMALL_CRATER_SIZE) {
-        MyTools::GotoXY(x - 4, y + 1);
+        FileLoggerSingletone::instance().GotoXY(x - 4, y + 1);
         std::cout << "==     ==";
-        MyTools::GotoXY(x - 2, y + 2);
+        FileLoggerSingletone::instance().GotoXY(x - 2, y + 2);
         std::cout << "=====";
     }
 }
@@ -27,7 +27,7 @@ bool Crater::isInside(double xn) const {
 //==================================================================================================
 
 void Ground::Draw() const {
-    MyTools::SetColor(MyTools::CC_Green);
+    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_Green);
     
     const size_t bufSize = width + 1;
     char* buf = new (std::nothrow) char[bufSize];
@@ -35,7 +35,7 @@ void Ground::Draw() const {
         return;
     
     if (vecCrates.size() == 0) {
-        MyTools::GotoXY(x, y);
+        FileLoggerSingletone::instance().GotoXY(x, y);
         memset(buf, '=', bufSize);
         buf[bufSize - 1] = '\0';
         std::cout << buf;
@@ -47,7 +47,7 @@ void Ground::Draw() const {
             buf[i - X] = c;
         }
         
-        MyTools::GotoXY((double)X, y);
+        FileLoggerSingletone::instance().GotoXY((double)X, y);
         buf[bufSize-1] = '\0';
         std::cout << buf;
         

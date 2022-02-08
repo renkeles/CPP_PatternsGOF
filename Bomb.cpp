@@ -2,11 +2,11 @@
 #include <iostream>
 
 #include "Bomb.h"
-#include "MyTools.h"
+#include "FileLoggerSingletone/FileLoggerSingletone.h"
 
 
 void Bomb::Draw() const {
-    MyTools::SetColor(MyTools::CC_LightMagenta);
-    MyTools::GotoXY(x, y);
+    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_LightMagenta);
+    FileLoggerSingletone::instance().GotoXY(x, y);
     std::cout << "*";
 }

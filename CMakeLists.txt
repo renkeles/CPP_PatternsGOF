@@ -39,8 +39,8 @@ add_executable(${ProjectId} # WIN32
     DestroyableGroundObject.h
     GameObject.h
     
-    MyTools.h
-    MyTools.cpp
+    FileLoggerSingletone/FileLoggerSingletone.h
+    FileLoggerSingletone/FileLoggerSingletone.cpp
 )
 
 

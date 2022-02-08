@@ -2,17 +2,17 @@
 #include <iostream>
 
 #include "Plane.h"
-#include "MyTools.h"
+#include "FileLoggerSingletone/FileLoggerSingletone.h"
 
 
 void Plane::Draw() const {
-    MyTools::SetColor(MyTools::CC_LightBlue);
-    MyTools::GotoXY(x, y);
+    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_LightBlue);
+    FileLoggerSingletone::instance().GotoXY(x, y);
     std::cout << "=========>";
-    MyTools::GotoXY(x - 2, y - 1);
+    FileLoggerSingletone::instance().GotoXY(x - 2, y - 1);
     std::cout << "===";
-    MyTools::GotoXY(x + 3, y - 1);
+    FileLoggerSingletone::instance().GotoXY(x + 3, y - 1);
     std::cout << "\\\\\\\\";
-    MyTools::GotoXY(x + 3, y + 1);
+    FileLoggerSingletone::instance().GotoXY(x + 3, y + 1);
     std::cout << "////";
 }

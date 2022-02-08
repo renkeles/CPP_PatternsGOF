@@ -2,13 +2,13 @@
 #include <cstring>
 
 #include "LevelGUI.h"
-#include "MyTools.h"
+#include "FileLoggerSingletone/FileLoggerSingletone.h"
 
 
 void LevelGUI::Draw() const {
-    MyTools::SetColor(MyTools::CC_White);
+    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_White);
     
-    MyTools::GotoXY(x, y);
+    FileLoggerSingletone::instance().GotoXY(x, y);
     char* buf = new (std::nothrow) char[width + 1];
     
     if (buf == nullptr)
@@ -17,26 +17,26 @@ void LevelGUI::Draw() const {
     memset(buf, '+', width);
     buf[width] = '\0';
     std::cout << buf;
-    MyTools::GotoXY(x, y + height);
+    FileLoggerSingletone::instance().GotoXY(x, y + height);
     std::cout << buf;
     delete [] buf;
     buf = nullptr;
     
     for (size_t i = size_t(y); i < height + y; i++)
     {
-        MyTools::GotoXY(x, (double)i);
+        FileLoggerSingletone::instance().GotoXY(x, (double)i);
         std::cout << "+";
-        MyTools::GotoXY(x + width - 1, (double)i);
+        FileLoggerSingletone::instance().GotoXY(x + width - 1, (double)i);
         std::cout << "+";
     }
     
-    MyTools::GotoXY(3, 1);
+    FileLoggerSingletone::instance().GotoXY(3, 1);
     std::cout << "FramePerSecond: " << static_cast<int>(fps / (passedTime / 1000.0));
-    MyTools::GotoXY(25, 1);
+    FileLoggerSingletone::instance().GotoXY(25, 1);
     std::cout << "PassedTime: " << static_cast<int>(passedTime / 1000.0) << " sec";
-    MyTools::GotoXY(46, 1);
+    FileLoggerSingletone::instance().GotoXY(46, 1);
     std::cout << "BombsNum: " << bombsNumber;
-    MyTools::GotoXY(62, 1);
+    FileLoggerSingletone::instance().GotoXY(62, 1);
     std::cout << "Score: " << score;
 }
 

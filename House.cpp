@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "House.h"
-#include "MyTools.h"
+#include "FileLoggerSingletone/FileLoggerSingletone.h"
 
 
 bool House::isInside(double x1, double x2) const {
@@ -22,17 +22,17 @@ bool House::isInside(double x1, double x2) const {
 }
 
 void House::Draw() const {
-    MyTools::SetColor(MyTools::CC_Yellow);
-    MyTools::GotoXY(x, y - 5);
+    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_Yellow);
+    FileLoggerSingletone::instance().GotoXY(x, y - 5);
     std::cout << "  ########  ";
-    MyTools::GotoXY(x, y - 4);
+    FileLoggerSingletone::instance().GotoXY(x, y - 4);
     std::cout << "##        ##";
-    MyTools::GotoXY(x, y - 3);
+    FileLoggerSingletone::instance().GotoXY(x, y - 3);
     std::cout << "############";
-    MyTools::GotoXY(x, y - 2);
+    FileLoggerSingletone::instance().GotoXY(x, y - 2);
     std::cout << "#          #";
-    MyTools::GotoXY(x, y - 1);
+    FileLoggerSingletone::instance().GotoXY(x, y - 1);
     std::cout << "#          #";
-    MyTools::GotoXY(x, y);
+    FileLoggerSingletone::instance().GotoXY(x, y);
     std::cout << "############";
 }
