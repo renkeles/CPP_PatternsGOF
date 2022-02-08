@@ -10,6 +10,11 @@ class LoggerSingleton
         
         LoggerSingleton();
         
+        LoggerSingleton(const LoggerSingleton& other) = delete;
+        LoggerSingleton(const LoggerSingleton&& other) = delete;
+        LoggerSingleton& operator=(const LoggerSingleton& other) = delete;
+        LoggerSingleton& operator=(const LoggerSingleton&& other) = delete;
+        
         std::string addLineIndex(const std::string& str);
         
     public:

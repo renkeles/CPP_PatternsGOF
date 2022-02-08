@@ -29,6 +29,11 @@ class FileLoggerSingleton {
         
         FileLoggerSingleton();
         
+        FileLoggerSingleton(const FileLoggerSingleton& other) = delete;
+        FileLoggerSingleton(const FileLoggerSingleton&& other) = delete;
+        FileLoggerSingleton& operator=(const FileLoggerSingleton& other) = delete;
+        FileLoggerSingleton& operator=(const FileLoggerSingleton&& other) = delete;
+        
         void __fastcall OpenLogFile(const std::string& fileName);
         void CloseLogFile();
         
