@@ -2,13 +2,13 @@
 #include <conio.h>
 
 #include "SBomber.h"
-#include "FileLoggerSingletone/FileLoggerSingletone.h"
+#include "FileLoggerSingleton/FileLoggerSingleton.h"
 
 //========================================================================================================================
 
 int main(void)
 {
-    FileLoggerSingletone::instance().setLogFile("log.txt");
+    FileLoggerSingleton::instance().setLogFile("log.txt");
     
     SBomber game;
     
@@ -18,7 +18,7 @@ int main(void)
         if (_kbhit())
             game.ProcessKBHit();
         
-        FileLoggerSingletone::instance().ClrScr();
+        FileLoggerSingleton::instance().ClrScr();
         
         game.DrawFrame();
         game.MoveObjects();

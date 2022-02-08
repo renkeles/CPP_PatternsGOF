@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 
-#include "FileLoggerSingletone/FileLoggerSingletone.h"
+#include "FileLoggerSingleton/FileLoggerSingleton.h"
 #include "Ground.h"
 
 
@@ -9,9 +9,9 @@
 
 void Crater::Draw() const {
     if (width == SMALL_CRATER_SIZE) {
-        FileLoggerSingletone::instance().GotoXY(x - 4, y + 1);
+        FileLoggerSingleton::instance().GotoXY(x - 4, y + 1);
         std::cout << "==     ==";
-        FileLoggerSingletone::instance().GotoXY(x - 2, y + 2);
+        FileLoggerSingleton::instance().GotoXY(x - 2, y + 2);
         std::cout << "=====";
     }
 }
@@ -27,7 +27,7 @@ bool Crater::isInside(double xn) const {
 //==================================================================================================
 
 void Ground::Draw() const {
-    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::instance().CC_Green);
+    FileLoggerSingleton::instance().SetColor(FileLoggerSingleton::instance().CC_Green);
     
     const size_t bufSize = width + 1;
     char* buf = new (std::nothrow) char[bufSize];
@@ -35,7 +35,7 @@ void Ground::Draw() const {
         return;
     
     if (vecCrates.size() == 0) {
-        FileLoggerSingletone::instance().GotoXY(x, y);
+        FileLoggerSingleton::instance().GotoXY(x, y);
         memset(buf, '=', bufSize);
         buf[bufSize - 1] = '\0';
         std::cout << buf;
@@ -47,7 +47,7 @@ void Ground::Draw() const {
             buf[i - X] = c;
         }
         
-        FileLoggerSingletone::instance().GotoXY((double)X, y);
+        FileLoggerSingleton::instance().GotoXY((double)X, y);
         buf[bufSize-1] = '\0';
         std::cout << buf;
         

@@ -5,12 +5,12 @@
 #include <fstream>
 
 
-class FileLoggerSingletone {
+class FileLoggerSingleton {
     private:
         std::ofstream logOut;
         
-        FileLoggerSingletone();
-        ~FileLoggerSingletone();
+        FileLoggerSingleton();
+        ~FileLoggerSingleton();
         
         void __fastcall OpenLogFile(const std::string& fileName);
         void CloseLogFile();
@@ -18,7 +18,7 @@ class FileLoggerSingletone {
         std::string GetCurDateTime();
         
     public:
-        static FileLoggerSingletone& instance();
+        static FileLoggerSingleton& instance();
         
         static void setLogFile(const std::string& fileName);
         
