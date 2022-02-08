@@ -4,25 +4,7 @@
 #include <iostream>
 #include <fstream>
 
-
-class FileLoggerSingletone {
-    private:
-        std::ofstream logOut;
-        
-        FileLoggerSingletone();
-        ~FileLoggerSingletone();
-        
-        void __fastcall OpenLogFile(const std::string& fileName);
-        void CloseLogFile();
-        
-        std::string GetCurDateTime();
-        
-    public:
-        static FileLoggerSingletone& instance();
-        
-        static void setLogFile(const std::string& fileName);
-        
-        enum ConsoleColor {
+enum ConsoleColor {
             CC_Black = 0,
             CC_Blue,
             CC_Green,
@@ -40,6 +22,24 @@ class FileLoggerSingletone {
             CC_Yellow,
             CC_White,
         };
+
+class FileLoggerSingleton {
+    protected:
+        std::ofstream logOut;
+        
+        FileLoggerSingleton();
+        
+        void __fastcall OpenLogFile(const std::string& fileName);
+        void CloseLogFile();
+        
+        std::string GetCurDateTime();
+        
+    public:
+        ~FileLoggerSingleton();
+        
+        static FileLoggerSingleton& instance();
+        
+        void setLogFile(const std::string& fileName);
         
         void ClrScr();
         

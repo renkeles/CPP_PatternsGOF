@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "Tank.h"
-#include "FileLoggerSingletone/FileLoggerSingletone.h"
+#include "FileLoggerSingleton/LoggerSingleton.h"
 
 
 bool Tank::isInside(double x1, double x2) const
@@ -24,13 +24,13 @@ bool Tank::isInside(double x1, double x2) const
 
 void Tank::Draw() const
 {
-    FileLoggerSingletone::instance().SetColor(FileLoggerSingletone::CC_Brown);
-    FileLoggerSingletone::instance().GotoXY(x, y - 3);
+    LoggerSingleton::instance().SetColor(CC_Brown);
+    LoggerSingleton::instance().GotoXY(x, y - 3);
     std::cout << "    #####";
-    FileLoggerSingletone::instance().GotoXY(x-2, y - 2);
+    LoggerSingleton::instance().GotoXY(x-2, y - 2);
     std::cout << "#######   #";
-    FileLoggerSingletone::instance().GotoXY(x, y - 1);
+    LoggerSingleton::instance().GotoXY(x, y - 1);
     std::cout << "    #####";
-    FileLoggerSingletone::instance().GotoXY(x,y);
+    LoggerSingleton::instance().GotoXY(x,y);
     std::cout << " ###########";
 }
