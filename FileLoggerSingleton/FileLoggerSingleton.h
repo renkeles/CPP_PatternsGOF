@@ -10,7 +10,11 @@ class FileLoggerSingleton {
         std::ofstream logOut;
         
         FileLoggerSingleton();
-        ~FileLoggerSingleton();
+        
+        FileLoggerSingleton(const FileLoggerSingleton& other) = delete;
+        FileLoggerSingleton(const FileLoggerSingleton&& other) = delete;
+        FileLoggerSingleton& operator=(const FileLoggerSingleton& other) = delete;
+        FileLoggerSingleton& operator=(const FileLoggerSingleton&& other) = delete;
         
         void __fastcall OpenLogFile(const std::string& fileName);
         void CloseLogFile();
@@ -18,6 +22,8 @@ class FileLoggerSingleton {
         std::string GetCurDateTime();
         
     public:
+        ~FileLoggerSingleton();
+        
         static FileLoggerSingleton& instance();
         
         static void setLogFile(const std::string& fileName);
