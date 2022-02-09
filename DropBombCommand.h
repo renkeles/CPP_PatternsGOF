@@ -5,7 +5,7 @@
 #include "DynamicObject.h"
 #include "Plane.h"
 #include <vector>
-#include "Bomb.h"
+#include "BombDecorator.h"
 #include "Ground.h"
 
 
@@ -39,11 +39,16 @@ class DropBombCommand : public Command {
                 
                 Bomb* pBomb = new Bomb;
                 pBomb->SetDirection(0.3, 1);
-                pBomb->SetSpeed(speed);
                 pBomb->SetPos(x, y);
                 pBomb->SetWidth(craterSize);
                 
-                vec.push_back(pBomb);
+                BombDecorator* bombDecorator = new BombDecorator(
+                    pBomb,
+                    speed,
+                    ">"
+                );
+                
+                vec.push_back(bombDecorator);
                 bombsNumber--;
                 score -= Bomb::BombCost;
             }
