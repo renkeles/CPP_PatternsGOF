@@ -18,6 +18,7 @@ class DeleteDynamicObjectCommand : public Command {
         void execute() override {
             for (auto it = vec.begin(); it != vec.end(); ++it)
                 if (*it == pObject) {
+                    delete *it;
                     vec.erase(it);
                     return;
                 }
