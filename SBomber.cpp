@@ -245,6 +245,19 @@ void SBomber::ProcessKBHit() {
                 )
             );
             break;
+        case 'v':
+        case 'V':
+            CommandExecuter(
+                new DropBombDecoratorCommand(
+                    FindPlane(),
+                    vecDynamicObj,
+                    bombsNumber,
+                    score,
+                    4.0,
+                    SMALL_CRATER_SIZE
+                )
+            );
+            break;
         default:
             break;
     }

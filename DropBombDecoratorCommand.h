@@ -9,9 +9,9 @@
 #include "Ground.h"
 
 
-class DropBombCommand : public Command {
+class DropBombDecoratorCommand : public Command {
     public:
-        DropBombCommand(
+        DropBombDecoratorCommand(
             const Plane* plane,
             std::vector<DynamicObject*>& vec,
             uint16_t& bombsNumber,
@@ -28,7 +28,7 @@ class DropBombCommand : public Command {
                 craterSize(craterSize)
         {}
         
-        ~DropBombCommand() {}
+        ~DropBombDecoratorCommand() {}
         
         void execute() override {
             if (bombsNumber > 0) {
@@ -40,10 +40,15 @@ class DropBombCommand : public Command {
                 Bomb* pBomb = new Bomb;
                 pBomb->SetDirection(0.3, 1);
                 pBomb->SetPos(x, y);
-                pBomb->SetSpeed(speed);
                 pBomb->SetWidth(craterSize);
                 
-                vec.push_back(pBomb);
+                BombDecorator* bombDecorator = new BombDecorator(
+                    pBomb,
+                    speed,
+                    ">"
+                );
+                
+                vec.push_back(bombDecorator);
                 bombsNumber--;
                 score -= Bomb::BombCost;
             }

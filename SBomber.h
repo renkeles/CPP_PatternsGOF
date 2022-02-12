@@ -11,6 +11,7 @@
 #include "DeleteDynamicObjectCommand.h"
 #include "DeleteStaticObjectCommand.h"
 #include "DropBombCommand.h"
+#include "DropBombDecoratorCommand.h"
 
 
 class SBomber

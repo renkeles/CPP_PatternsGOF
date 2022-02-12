@@ -6,7 +6,7 @@
 #include "FileLoggerSingleton/FileLoggerSingleton.h"
 
 
-class BombDecorator : public DynamicObject {
+class BombDecorator : public Bomb {
     private:
         Bomb* pBomb;
         const char* pic;
@@ -36,5 +36,25 @@ class BombDecorator : public DynamicObject {
         void Draw() const override {
             pBomb->Draw();
             std::cout << pic;
+        }
+        
+        virtual void SetPos(double nx, double ny) {
+            pBomb->SetPos(nx, ny);
+        }
+        
+        virtual double GetY() const {
+            return pBomb->GetY();
+        }
+        
+        virtual double GetX() const {
+            return pBomb->GetX();
+        }
+        
+        virtual void SetWidth(uint16_t widthN) {
+            pBomb->SetWidth(widthN);
+        }
+        
+        virtual uint16_t GetWidth() const {
+            return pBomb->GetWidth();
         }
 };
